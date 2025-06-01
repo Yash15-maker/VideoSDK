@@ -17,6 +17,7 @@ import {
 export default function MeetingTimeline({ meetingData }) {
   const [showParticipantTimeline, setShowParticipantTimeline] = useState(true);
 
+  // Mock data for demonstration purposes
   const mockMeetingData = meetingData || {
     start: "2024-01-15T10:00:00Z",
     end: "2024-01-15T10:20:00Z",
@@ -61,6 +62,7 @@ export default function MeetingTimeline({ meetingData }) {
   const meetingEnd = new Date(mockMeetingData.end);
   const totalDuration = meetingEnd - meetingStart;
 
+  // Function to generate time markers for the timeline
   const generateTimeMarkers = () => {
     const markers = [];
     for (let i = 0; i <= 20; i += 2) {
@@ -78,13 +80,15 @@ export default function MeetingTimeline({ meetingData }) {
   };
 
   const timeMarkers = generateTimeMarkers();
-
+  
+  // Function to calculate the position of an event on the timeline
   const getPositionOnTimeline = (timestamp) => {
     const eventTime = new Date(timestamp);
     const elapsed = eventTime - meetingStart;
     return Math.min(Math.max((elapsed / totalDuration) * 100, 0), 100);
   };
 
+  // Function to format time in HH:MM format
   const formatTime = (timestamp) => {
     return new Date(timestamp).toLocaleTimeString("en-US", {
       hour12: false,
@@ -99,6 +103,7 @@ export default function MeetingTimeline({ meetingData }) {
     return `${minutes} mins`;
   };
 
+  // Function to check if a participant has dropped off
   const isDropOff = (participant, timelogIndex) => {
     if (timelogIndex < participant.timelog.length - 1) {
       const currentEnd = new Date(participant.timelog[timelogIndex].end);
@@ -107,7 +112,8 @@ export default function MeetingTimeline({ meetingData }) {
     }
     return false;
   };
-
+  
+  // Toggle function for showing/hiding participant timeline
   const toggleParticipantTimeline = () => {
     setShowParticipantTimeline(!showParticipantTimeline);
   };
