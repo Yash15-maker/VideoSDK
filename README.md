@@ -1,12 +1,41 @@
-# React + Vite
+### Meeting Timeline Tracker
+This project shows a timeline of meeting participants and their activity during the meeting. It displays when participants joined, left, muted/unmuted, turned their camera on/off, shared their screen, disconnected, or had an error.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Features
+Visual timeline of each participant
 
-Currently, two official plugins are available:
+Icons for mic, camera, screen share, errors, disconnects
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Shows when each user was active
 
-## Expanding the ESLint configuration
+Uses percentages to place events correctly based on time
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## How to Run
+Clone the repo
+git clone <repo-url>
+
+Install dependencies
+npm install
+
+Start the app
+npm run dev or npm start
+
+Files
+MeetingTimeline.js: Main component that renders the timeline
+
+meetingData: Can be passed as a prop or use the mock data inside the component
+
+Tech Used
+React
+
+Tailwind CSS (for styling)
+
+Lucide-react (for icons)
+
+Notes
+All event times are converted to percentage widths to align them on the timeline
+
+The component will show mock data if no props are passed
+
+Time markers are shown every 2 minutes
+
